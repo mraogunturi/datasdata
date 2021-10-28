@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+import logging
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -89,12 +89,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'datasdata',
         'USER': 'postgres',
-        'PASSWORD': 'Maheshitha@199',
+        'PASSWORD': 'Mahesh',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
-
 
 
 # Password validation
@@ -130,7 +129,84 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 STATIC_URL='/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            # 'filters': ['require_debug_true'],
+            'class': 'logging.FileHandler',
+            'formatter': 'simple',
+            'filename': 'logs/DEBUG.log',
+        },
+        'file': {
+            'level': 'INFO',
+            # 'filters': ['require_debug_true'],
+            'class': 'logging.FileHandler',
+            'formatter': 'simple',
+            'filename': 'logs/INFO.log',
+        },
+        'file': {
+            'level': 'WARNING',
+            # 'filters': ['require_debug_true'],
+            'class': 'logging.FileHandler',
+            'formatter': 'simple',
+            'filename': 'logs/WARNING.log',
+        },
+        'file': {
+            'level': 'ERROR',
+            # 'filters': ['require_debug_true'],
+            'class': 'logging.FileHandler',
+            'formatter': 'simple',
+            'filename': 'logs/ERROR.log',
+        },
+        'file': {
+            'level': 'CRITICAL',
+            # 'filters': ['require_debug_true'],
+            'class': 'logging.FileHandler',
+            'formatter': 'simple',
+            'filename': 'logs/CRITICAL.log',
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'DEBUG'
+        },
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'INFO'
+        },
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'WARNING'
+        },
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'ERROR'
+        },
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'CRITICAL'
+        }
+    }
+}
