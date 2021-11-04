@@ -82,3 +82,4 @@ def UserDelete(request, pk):
     return Response('Item deleted')
 
 
+print("jentest")
