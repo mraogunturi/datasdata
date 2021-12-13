@@ -136,77 +136,77 @@ STATIC_URL='/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            # 'filters': ['require_debug_true'],
-            'class': 'logging.FileHandler',
-            'formatter': 'simple',
-            'filename': 'logs/DEBUG.log',
-        },
-        'file': {
-            'level': 'INFO',
-            # 'filters': ['require_debug_true'],
-            'class': 'logging.FileHandler',
-            'formatter': 'simple',
-            'filename': 'logs/INFO.log',
-        },
-        'file': {
-            'level': 'WARNING',
-            # 'filters': ['require_debug_true'],
-            'class': 'logging.FileHandler',
-            'formatter': 'simple',
-            'filename': 'logs/WARNING.log',
-        },
-        'file': {
-            'level': 'ERROR',
-            # 'filters': ['require_debug_true'],
-            'class': 'logging.FileHandler',
-            'formatter': 'simple',
-            'filename': 'logs/ERROR.log',
-        },
-        'file': {
-            'level': 'CRITICAL',
-            # 'filters': ['require_debug_true'],
-            'class': 'logging.FileHandler',
-            'formatter': 'simple',
-            'filename': 'logs/CRITICAL.log',
-        }
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'propagate': True,
-            'level': 'DEBUG'
-        },
-        'django': {
-            'handlers': ['file'],
-            'propagate': True,
-            'level': 'INFO'
-        },
-        'django': {
-            'handlers': ['file'],
-            'propagate': True,
-            'level': 'WARNING'
-        },
-        'django': {
-            'handlers': ['file'],
-            'propagate': True,
-            'level': 'ERROR'
-        },
-        'django': {
-            'handlers': ['file'],
-            'propagate': True,
-            'level': 'CRITICAL'
-        }
-    }
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'simple': {
+#             'format': '{levelname} {message}',
+#             'style': '{',
+#         },
+#     },
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             # 'filters': ['require_debug_true'],
+#             'class': 'logging.FileHandler',
+#             'formatter': 'simple',
+#             'filename': 'logs/DEBUG.log',
+#         },
+#         'file': {
+#             'level': 'INFO',
+#             # 'filters': ['require_debug_true'],
+#             'class': 'logging.FileHandler',
+#             'formatter': 'simple',
+#             'filename': 'logs/INFO.log',
+#         },
+#         'file': {
+#             'level': 'WARNING',
+#             # 'filters': ['require_debug_true'],
+#             'class': 'logging.FileHandler',
+#             'formatter': 'simple',
+#             'filename': 'logs/WARNING.log',
+#         },
+#         'file': {
+#             'level': 'ERROR',
+#             # 'filters': ['require_debug_true'],
+#             'class': 'logging.FileHandler',
+#             'formatter': 'simple',
+#             'filename': 'logs/ERROR.log',
+#         },
+#         'file': {
+#             'level': 'CRITICAL',
+#             # 'filters': ['require_debug_true'],
+#             'class': 'logging.FileHandler',
+#             'formatter': 'simple',
+#             'filename': 'logs/CRITICAL.log',
+#         }
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file'],
+#             'propagate': True,
+#             'level': 'DEBUG'
+#         },
+#         'django': {
+#             'handlers': ['file'],
+#             'propagate': True,
+#             'level': 'INFO'
+#         },
+#         'django': {
+#             'handlers': ['file'],
+#             'propagate': True,
+#             'level': 'WARNING'
+#         },
+#         'django': {
+#             'handlers': ['file'],
+#             'propagate': True,
+#             'level': 'ERROR'
+#         },
+#         'django': {
+#             'handlers': ['file'],
+#             'propagate': True,
+#             'level': 'CRITICAL'
+#         }
+#     }
+# }

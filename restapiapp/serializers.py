@@ -24,3 +24,10 @@ class InputSerializer(serializers.ModelSerializer):
     class Meta:
         model=Apis
         fields='__all__'
+
+
+
+class UserCarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=[Users, Apis]
+        fields='__all__'
