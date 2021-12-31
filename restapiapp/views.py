@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 import logging
 # Create your views here.
-from rest_framework import generics, permissions, response, serializers
+from rest_framework import generics, permissions, response, serializers, status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -10,8 +10,7 @@ from restapiapp import models
 from .models import *
 from .models import Users as UserModel
 from .serializers import UserSerializer, DevelopersSerializer, InputSerializer, UserCarSerializer
-from django.http import JsonResponse, HttpResponse
-
+from django.http import Http404, HttpResponse, JsonResponse
 
 class Developers(generics.ListCreateAPIView):
     queryset = Developers.objects.all()
@@ -28,7 +27,7 @@ class Developers(generics.ListCreateAPIView):
 #     serializer_class = UserSerializer
 
 
-class Users(APIView):
+class UsersList(APIView):
     serializer_class=UserSerializer
     def get(self, request):
         querysetsdata = UserModel.objects.all()
@@ -47,6 +46,50 @@ class Users(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors)
+
+
+
+class UsersDetail(APIView):
+    """
+    Retrieve, update or delete a transformer instance
+    """
+    def get_object(self, pk):
+        # Returns an object instance that should 
+        # be used for detail views.
+        try:
+            return UserModel.objects.get(pk=pk)
+        except UserModel.DoesNotExist:
+            raise Http404
+  
+    def get(self, request, pk, format=None):
+        transformer = self.get_object(pk)
+        serializer = UserSerializer(transformer)
+        return Response(serializer.data)
+  
+    def put(self, request, pk, format=None):
+        transformer = self.get_object(pk)
+        serializer = UserSerializer(transformer, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+  
+    def patch(self, request, pk, format=None):
+        transformer = self.get_object(pk)
+        serializer = UserSerializer(transformer,
+                                           data=request.data,
+                                           partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+          
+  
+    def delete(self, request, pk, format=None):
+        transformer = self.get_object(pk)
+        transformer.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 
 @api_view(['GET'])

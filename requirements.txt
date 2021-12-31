@@ -1,5 +1,6 @@
-django
+django==3.0
 djangorestframework
 psycopg2-binary
 requests
-gurnicorn
+numpy==1.21
+pandas==1.3
