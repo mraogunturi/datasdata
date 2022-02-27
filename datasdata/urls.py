@@ -26,5 +26,5 @@ urlpatterns = [
     path('api-token-auth/', views.obtain_auth_token),    
     path('hello/<name>', hello),
     path('restapi/', include("restapiapp.urls"), name="restapiapp"),
-    path('loginapp/', include('loginapp.urls'), name='login')
+    path('', include('loginapp.urls'), name='login')
 ]
